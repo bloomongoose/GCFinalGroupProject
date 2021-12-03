@@ -45,7 +45,8 @@ export class NewHeroComponent {
     this.heroService.getRandomHero().subscribe((hero: Hero) => {
       console.log(hero);
       this.newHero = hero;
+      this.NewAccount(hero);
     });
-    this.NewAccount(this.newHero);
+   
   }
 }

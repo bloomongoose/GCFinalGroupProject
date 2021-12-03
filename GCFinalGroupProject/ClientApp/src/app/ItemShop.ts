@@ -1,0 +1,1 @@
+export interface ItemShop {  ItemName: string;  ItemDescription: string;  ItemPrice: number;}
