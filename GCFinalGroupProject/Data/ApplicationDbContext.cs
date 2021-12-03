@@ -12,6 +12,10 @@ namespace GCFinalGroupProject.Data
 {
     public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
     {
+        public DbSet<UserInventory> userInventories { get; set; }
+        public DbSet<HeroShop> heroShop { get; set; }
+        public DbSet<ItemShop> itemShop { get; set; }
+
         public ApplicationDbContext(
             DbContextOptions options,
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
