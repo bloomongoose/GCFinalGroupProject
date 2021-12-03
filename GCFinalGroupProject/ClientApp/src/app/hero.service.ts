@@ -32,7 +32,7 @@ export class HeroService {
 
   //pass all userInventory parameters through url.
   newAccount(inv: UserInventory): any {
-    return this.http.post(this.baseUrl + `api/hero/newAccount?_HeroID=${inv.HeroID}&_ItemOne=${inv.ItemOne}&_ItemTwo=${inv.ItemTwo}$_Money=${inv.Money} `, {});
+    return this.http.post(this.baseUrl + `api/hero/newAccount?_HeroID=${inv.HeroID}&_ItemOne=${inv.ItemOne}&_ItemTwo=${inv.ItemTwo}&_Money=${inv.Money} `, {});
   }
 
 
