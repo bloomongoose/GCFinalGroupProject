@@ -13,6 +13,7 @@ import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { NewHeroComponent } from './new-hero/new-hero.component';
+import { ItemShopComponent } from './item-shop/item-shop.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NewHeroComponent } from './new-hero/new-hero.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    NewHeroComponent
+    NewHeroComponent,
+    ItemShopComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -32,7 +34,8 @@ import { NewHeroComponent } from './new-hero/new-hero.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
-      { path: 'newHero', component: NewHeroComponent, canActivate: [AuthorizeGuard] }
+      { path: 'newHero', component: NewHeroComponent, canActivate: [AuthorizeGuard] },
+      {path: 'ItemShop',component:ItemShopComponent,canActivate:[AuthorizeGuard] }
       
     ])
   ],

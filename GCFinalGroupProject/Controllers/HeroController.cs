@@ -22,9 +22,9 @@ namespace GCFinalGroupProject.Controllers
             context = _context;
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPost("newAccount")]
-        public UserInventory newAccount (string _HeroID, int _ItemOne,int _ItemTwo,int _Money)
+        public UserInventory newAccount(string _HeroID, int _ItemOne, int _ItemTwo, int _Money)
         {
             ClaimsPrincipal currentUser = this.User;
             string currentUserID = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -34,6 +34,24 @@ namespace GCFinalGroupProject.Controllers
             return result;
         }
 
+        [Authorize]
+        [HttpGet("GetInv")]
+        public UserInventory GetInv() {
+            ClaimsPrincipal currentUser = this.User;
+            string currentUserID = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+            UserInventory Myinv = new UserInventory();
+            List <UserInventory > invList = context.userInventories.ToList();
+
+            foreach (UserInventory inv in  invList )
+            {
+                if (inv.UserID==currentUserID)
+                {
+                    Myinv = inv;
+                    break;
+                }
+            }
+            return Myinv;
+        }
 
     }
 }
