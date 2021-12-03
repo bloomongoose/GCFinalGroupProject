@@ -33,6 +33,7 @@ import { NewHeroComponent } from './new-hero/new-hero.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       { path: 'newHero', component: NewHeroComponent, canActivate: [AuthorizeGuard] }
+      
     ])
   ],
   providers: [
