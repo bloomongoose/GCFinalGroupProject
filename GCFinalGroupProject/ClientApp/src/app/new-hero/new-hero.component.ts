@@ -29,7 +29,7 @@ export class NewHeroComponent {
   NewAccount(hero:Hero): void {
     
     let userInv: UserInventory = {
-      HeroID: "10",
+      HeroID: hero.id,
       ItemOne: 0,
       ItemTwo: 0,
       Money: 300,
