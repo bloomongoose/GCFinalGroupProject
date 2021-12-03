@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable,Inject } from '@angular/core';
 import { secret } from '../secret';
+import { UserInventory } from './UserInventory';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class HeroService {
   apiUrl: string = "https://superheroapi.com/api.php/";
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string
+) {
     
   }
    
@@ -29,10 +31,10 @@ export class HeroService {
   }
 
   //pass all userInventory parameters through url.
-  NewAccount(heroID: string): any {
-    let baseUrl: string = this.apiUrl + this.apiKey;
-    return this.http.post(baseUrl + `/api/Hero/newAccount?heroID=${heroID}&`, {});
+  newAccount(inv: UserInventory): any {
+    return this.http.post(this.baseUrl + `api/hero/newAccount?_HeroID=${inv.HeroID}&_ItemOne=${inv.ItemOne}&_ItemTwo=${inv.ItemTwo}$_Money=${inv.Money} `, {});
   }
+
 
 
 

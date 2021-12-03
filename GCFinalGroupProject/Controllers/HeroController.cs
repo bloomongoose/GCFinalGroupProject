@@ -22,15 +22,15 @@ namespace GCFinalGroupProject.Controllers
             context = _context;
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpPost("newAccount")]
-        public UserInventory NewAccount (string heroID)
+        public UserInventory newAccount (string _HeroID, int _ItemOne,int _ItemTwo,int _Money)
         {
             ClaimsPrincipal currentUser = this.User;
             string currentUserID = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
-            UserInventory result = new UserInventory() { UserID = currentUserID, HeroID = heroID, ItemOne = 0, ItemTwo = 0, Money = 300 };
-            this.context.userInventories.Add(result);
-            this.context.SaveChanges();
+            UserInventory result = new UserInventory() { UserID = currentUserID, HeroID = _HeroID, ItemOne = _ItemOne, ItemTwo = _ItemTwo, Money = _Money };
+            context.userInventories.Add(result);
+            context.SaveChanges();
             return result;
         }
 
