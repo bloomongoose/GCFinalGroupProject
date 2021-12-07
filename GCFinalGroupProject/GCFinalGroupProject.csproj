@@ -34,14 +34,15 @@
     <None Remove="ClientApp\secret.ts" />
     <None Remove="ClientApp\src\app\Hero.ts" />
     <None Remove="ClientApp\src\app\ItemShop.ts" />
+    <None Remove="ClientApp\src\app\secret.ts" />
     <None Remove="ClientApp\src\app\UserInventory.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\Hero.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\ItemShop.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\secret.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\UserInventory.ts" />
-    <TypeScriptCompile Include="ClientApp\src\secret.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

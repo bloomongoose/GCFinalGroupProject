@@ -22,15 +22,18 @@ namespace GCFinalGroupProject.Controllers
 
 
         [HttpGet("AllItems")]
-        public List<ItemShop> GetAllItems() {
-            return context.itemShop.ToList();
-        } 
+        public ItemShop[] GetAllItems()
+        {
+            return context.itemShop.ToArray();
+
+        }
 
         [HttpPatch("Buy")]
-        public UserInventory BuyItem(int id,int price) {
+        public UserInventory BuyItem(int id, int price)
+        {
             ClaimsPrincipal currentUser = this.User;
             string currentUserID = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
-            
+
             UserInventory Myinv = new UserInventory();
             //List<UserInventory> invList = context.userInventories.ToList();
 
@@ -38,30 +41,28 @@ namespace GCFinalGroupProject.Controllers
             {
                 if (inv.UserID == currentUserID)
                 {
-                    if (inv.Money>=price)
+                    if (inv.Money >= price)
                     {
-                        if (inv.ItemOne == 0) {
+                        //checks if inventory slot 1 then 2 is empty
+                        if (inv.ItemOne == 0)
+                        {
                             inv.Money = inv.Money - price;
-                            inv.ItemOne=id;
-                            context.SaveChanges();
+                            inv.ItemOne = id;
                             Myinv = inv;
                             break;
-                        } 
+                        }
                         inv.Money = inv.Money - price;
-                        context.SaveChanges();
                         inv.ItemTwo = id;
                         Myinv = inv;
                         break;
                     }
-                    
+                    break;
                 }
             }
+            context.SaveChanges();
             return Myinv;
-
-
         }
 
-
-
+        //PATCH for item use. Changing item slots to zero. 
     }
 }

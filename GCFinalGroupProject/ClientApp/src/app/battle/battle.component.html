@@ -1,0 +1,29 @@
+<div>
+  <p>
+    {{playerHero.name}}<br />
+    {{itemOne}}<br />
+    {{itemTwo}}<br />
+    {{Damage}}
+    {{HP}}<br>
+    {{villain.name}}<br />
+    {{villainDmg}}
+    {{villainHP}}
+
+  </p>
+  <div *ngIf="villainHP > 0 && HP > 0" >
+
+    <button (click)="Fight()">Fight!</button>
+    <p>{{villainHP}}</p>
+  </div>
+  
+  <div *ngIf="villainHP <= 0"><p>You won!</p></div>
+  <div *ngIf="HP <= 0">
+
+    You Lose!
+    <div ><button (click)="AfterDeath(playerInv)" [routerLink]="'/newHero'">Generate New Hero Cause yours Died</button></div>
+
+
+  </div>
+
+  
+</div>

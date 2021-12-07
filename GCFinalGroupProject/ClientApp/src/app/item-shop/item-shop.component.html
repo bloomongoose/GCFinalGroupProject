@@ -1,1 +1,9 @@
-﻿<div style="border: 1px solid red">ItemShop Component</div>
+<div>
+  <div>
+    <p *ngFor="let i of allItems">{{i.itemName}}<button (click)="purchaseItem(i.id, i.itemPrice)">Buy</button></p>
+    
+  </div>
+  <div>
+    <button [routerLink]="'/Battle'">CLICK ONLY IF READY TO BATTLE INTENSELY FOR .02 SECONDS</button>
+  </div>
+</div>
