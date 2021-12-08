@@ -1,29 +1,37 @@
 <div>
+  <h3>Consecutive Wins on this Hero: {{consecutiveWins}}</h3>
   <p>
     {{playerHero.name}}<br />
-    {{itemOne}}<br />
-    {{itemTwo}}<br />
+    {{itemOne}}<button *ngIf="playerInv.itemOne > 0" (click)="UseItemOne(playerInv.itemOne)" [disabled]="itemOneUsed">Use Item</button><br />
+    {{itemTwo}}<button *ngIf="playerInv.itemTwo > 0" (click)="UseItemTwo(playerInv.itemTwo)" [disabled]="itemTwoUsed">Use Item</button><br />
     {{Damage}}
     {{HP}}<br>
     {{villain.name}}<br />
     {{villainDmg}}
     {{villainHP}}
-
+    {{villain.powerstats.speed}}
   </p>
-  <div *ngIf="villainHP > 0 && HP > 0" >
 
+  <div *ngIf="villainHP > 0 && HP > 0">
     <button (click)="Fight()">Fight!</button>
-    <p>{{villainHP}}</p>
+    <div>
+      <button (click)="Run()" [routerLink]="'/ItemShop'">Run Away back to Igor's Supply Hut.</button>
+      <p>Incur 100 credits lost and consecutive wins resets to 0.</p>
+    </div>
   </div>
-  
-  <div *ngIf="villainHP <= 0"><p>You won!</p></div>
+
+  <div *ngIf="villainHP <= 0">
+    <p>You won! You earned {{earnings}} Credits! Head back to the store to gear up!</p>
+    <button (click)="AfterWin()" [disabled]="creditsCollected" >Click To Collect Credits</button>     
+    <div *ngIf="creditsCollected">
+      <button [routerLink]="'/ItemShop'">To Shop</button>
+    </div>
+  </div>
+
   <div *ngIf="HP <= 0">
-
-    You Lose!
-    <div ><button (click)="AfterDeath(playerInv)" [routerLink]="'/newHero'">Generate New Hero Cause yours Died</button></div>
-
-
+    <p>You Lose!</p>
+    <div>
+      <button (click)="AfterDeath(playerInv)" [routerLink]="'/newHero'">Generate New Hero Cause yours Died</button>
+    </div>
   </div>
-
-  
 </div>

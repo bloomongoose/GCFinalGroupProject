@@ -15,17 +15,21 @@ export class NewHeroComponent {
 
   newHero: Hero = {} as Hero;
   exists: boolean;
+  
 
   constructor(private heroService: HeroService) {
 
   }
 
   ngOnInit() {
-    this.CheckHeroExists();
-
+    this.exists = true;
+    console.log(document.cookie);
+    setTimeout(() => { this.CheckHeroExists() }, 1000 * 1);
+    
+      document.cookie = "0";   
+    
+    console.log(document.cookie.split(";")[1].substring(1));
   }
-
-
 
   CheckHeroExists(): boolean {
     return this.heroService.CheckHeroExists().subscribe((response: boolean) => {
@@ -42,7 +46,6 @@ export class NewHeroComponent {
       }
     });
   }
-
   NewAccount(hero: Hero): void {
     let userInv: UserInventory = {
       heroID: hero.id,
@@ -55,7 +58,6 @@ export class NewHeroComponent {
       console.log(response);
     });
   }
-
   getHero(): void {
     this.exists = true;
     this.heroService.getRandomHero().subscribe((hero: Hero) => {

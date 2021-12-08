@@ -39,6 +39,7 @@ export class LogoutComponent implements OnInit {
       case LogoutActions.LoggedOut:
         this.message.next('You successfully logged out!');
         break;
+      //possibly reset document.cookie = "0"; 
       default:
         throw new Error(`Invalid action '${action}'`);
     }
@@ -64,6 +65,7 @@ export class LogoutComponent implements OnInit {
           throw new Error('Invalid authentication result status.');
       }
     } else {
+      
       this.message.next('You successfully logged out!');
     }
   }

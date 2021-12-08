@@ -36,8 +36,8 @@ export class ItemShopComponent {
   purchaseItem(itemID: number, itemPrice: number) {
     this.itemService.Buy(itemID, itemPrice).subscribe((response: any) => {
       console.log(response);
+      this.updateInventory();
     });
-    this.updateInventory();
   }
 
   updateInventory() {
@@ -46,5 +46,4 @@ export class ItemShopComponent {
       this.currentInv = inv;
     });
   }
-
 }
