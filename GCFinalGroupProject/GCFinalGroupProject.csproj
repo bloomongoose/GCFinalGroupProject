@@ -36,6 +36,8 @@
     <None Remove="ClientApp\src\app\ItemShop.ts" />
     <None Remove="ClientApp\src\app\secret.ts" />
     <None Remove="ClientApp\src\app\UserInventory.ts" />
+    <None Remove="ClientApp\src\secret.js" />
+    <None Remove="ClientApp\src\secret.js.map" />
   </ItemGroup>
 
   <ItemGroup>
