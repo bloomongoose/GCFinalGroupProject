@@ -1,7 +1,7 @@
 <div>
+  <div><p>Player Credits: {{currentInv.money}}</p></div>
   <div>
-    <p *ngFor="let i of allItems">{{i.itemName}}<button (click)="purchaseItem(i.id, i.itemPrice)">Buy</button></p>
-    
+    <p *ngFor="let i of allItems">{{i.itemName}} | Price: {{i.itemPrice}} Credits | {{i.itemDescription}}<button (click)="purchaseItem(i.id, i.itemPrice)">Buy</button></p> 
   </div>
   <div>
     <button [routerLink]="'/Battle'">CLICK ONLY IF READY TO BATTLE INTENSELY FOR .02 SECONDS</button>

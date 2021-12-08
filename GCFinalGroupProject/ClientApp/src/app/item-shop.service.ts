@@ -22,4 +22,12 @@ export class ItemShopService {
     return this.http.patch(this.baseUrl + `api/item/Buy?id=${id}&price=${price}`, {})
   }
 
+  EmptySlot(slot: number): any {
+    return this.http.put(this.baseUrl + `api/item/EmptySlot?slot=${slot}`, {});
+  }
+
+  Earns(money: number): any{
+    return this.http.put(this.baseUrl + `api/item/Earns?money=${money}`, {});
+  }
+
 }

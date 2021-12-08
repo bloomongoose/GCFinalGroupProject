@@ -64,5 +64,36 @@ namespace GCFinalGroupProject.Controllers
         }
 
         //PATCH for item use. Changing item slots to zero. 
+        [HttpPut("EmptySlot")]
+        public UserInventory EmptySlot(int slot)
+        {
+            ClaimsPrincipal currentUser = this.User;
+            string currentUserID = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+            UserInventory X = context.userInventories.Where(x => x.UserID == currentUserID).First();
+            if (slot == 1)
+            {
+                X.ItemOne = 0;
+            }
+            if (slot == 2)
+            {
+                X.ItemTwo = 0;
+            }
+            context.Update(X);
+            context.SaveChanges();
+            return X;
+
+        }
+
+        [HttpPut("Earns")]
+        public UserInventory Earns(int money)
+        {
+            ClaimsPrincipal currentUser = this.User;
+            string currentUserID = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+            UserInventory X = context.userInventories.Where(x => x.UserID == currentUserID).First();
+            X.Money += money;
+            context.Update(X);
+            context.SaveChanges();
+            return X;
+        }
     }
 }
