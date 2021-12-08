@@ -12,19 +12,39 @@ import { UserInventory } from '../UserInventory';
 /** ItemShop component*/
 export class ItemShopComponent {
   currentInv: UserInventory = {} as UserInventory;
+  item: ItemShop = {} as ItemShop;
 
-
+  allItems: ItemShop[] = [];
     /** ItemShop ctor */
     constructor(private heroService:HeroService, private itemService:ItemShopService) {
 
   }
 
   ngOnInit() {
-    this.heroService.GetInv().subscribe((inv:UserInve) => {
-      console.log(item);
-      this.currentInv = item;
+    this.updateInventory();
+    this.fillArray();
+   
+  }
+  //create array of itemshop. for loop on array. 
+  fillArray() {
+    this.allItems.push(this.itemService.GetAllItems().subscribe((response: ItemShop[]) => {
+      console.log(response);
+      this.allItems = response;
+    }));
+  }
+
+  purchaseItem(itemID: number, itemPrice: number) {
+    this.itemService.Buy(itemID, itemPrice).subscribe((response: any) => {
+      console.log(response);
     });
-    console.log(this.currentInv);
+    this.updateInventory();
+  }
+
+  updateInventory() {
+    this.heroService.GetInv().subscribe((inv: UserInventory) => {
+      console.log(inv);
+      this.currentInv = inv;
+    });
   }
 
 }

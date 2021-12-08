@@ -1,1 +1,1 @@
-export interface ItemShop {  ItemName: string;  ItemDescription: string;  ItemPrice: number;}
+export interface ItemShop {  id: number;  itemName: string;  itemDescription: string;  itemPrice: number;}

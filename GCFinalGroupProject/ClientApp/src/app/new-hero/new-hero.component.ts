@@ -3,50 +3,71 @@ import { HeroService } from '../hero.service';
 import { Hero } from '../Hero';
 import { UserInventory } from '../UserInventory';
 
+
 @Component({
-    selector: 'app-new-hero',
-    templateUrl: './new-hero.component.html',
-    styleUrls: ['./new-hero.component.css']
+  selector: 'app-new-hero',
+  templateUrl: './new-hero.component.html',
+  styleUrls: ['./new-hero.component.css']
 })
 /** NewHero component*/
 export class NewHeroComponent {
   /** NewHero ctor */
 
   newHero: Hero = {} as Hero;
-  
+  exists: boolean;
 
-    constructor(private heroService: HeroService) {
-     
-    }
+  constructor(private heroService: HeroService) {
+
+  }
 
   ngOnInit() {
-    this.getHero();
-   
- 
+    this.CheckHeroExists();
+
   }
 
 
-  NewAccount(hero:Hero): void {
-    
+
+  CheckHeroExists(): boolean {
+    return this.heroService.CheckHeroExists().subscribe((response: boolean) => {
+      console.log(response);
+      this.exists = response;
+      if (this.exists == true) {
+        this.heroService.GetInv().subscribe((response: any) => {
+          console.log(response);
+          this.heroService.getById(response.heroID).subscribe((resultHero: Hero) => {
+            this.newHero = resultHero;
+            console.log(this.newHero);
+          });
+        });
+      }
+    });
+  }
+
+  NewAccount(hero: Hero): void {
     let userInv: UserInventory = {
-      HeroID: hero.id,
-      ItemOne: 0,
-      ItemTwo: 0,
-      Money: 300,
-  };
+      heroID: hero.id,
+      itemOne: 0,
+      itemTwo: 0,
+      money: 300,
+    };
 
     this.heroService.newAccount(userInv).subscribe((response: any) => {
       console.log(response);
-  });
+    });
   }
-  
 
   getHero(): void {
+    this.exists = true;
     this.heroService.getRandomHero().subscribe((hero: Hero) => {
       console.log(hero);
-      this.newHero = hero;
-      this.NewAccount(hero);
+      if (hero.powerstats.intelligence != "null") {
+        this.newHero = hero;
+        this.NewAccount(hero);
+      }
+      else
+      {
+        this.getHero();
+      }
     });
-   
   }
 }

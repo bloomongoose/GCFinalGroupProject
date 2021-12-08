@@ -7,16 +7,19 @@ import { ItemShop } from './ItemShop';
 })
 
 export class ItemShopService {
+
+
+
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
 
   }
 
-  GetAllItems() {
-    this.http.get(this.baseUrl + "api/item/AllItems", {});
+  GetAllItems(): any {
+    return this.http.get(this.baseUrl + "api/item/AllItems", {});
   }
 
-  Buy(item:ItemShop) {
-    this.http.patch(this.baseUrl + `api/item/Buy?item=${item.ItemPrice}`, {})
+  Buy(id:number, price:number):any {
+    return this.http.patch(this.baseUrl + `api/item/Buy?id=${id}&price=${price}`, {})
   }
 
 }

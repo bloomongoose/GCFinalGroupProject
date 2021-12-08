@@ -35,16 +35,35 @@ namespace GCFinalGroupProject.Controllers
         }
 
         [Authorize]
+        [HttpGet("CheckHeroExists")]
+        public bool CheckHeroExists()
+        {
+            bool exists = false;
+            ClaimsPrincipal currentUser = this.User;
+            string currentUserID = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            UserInventory[] result = context.userInventories.Where(x => x.UserID == currentUserID).ToArray();
+            if (result.Length > 0)
+            {
+                exists = true;
+            }
+            return exists;
+        }
+
+
+
+        [Authorize]
         [HttpGet("GetInv")]
-        public UserInventory GetInv() {
+        public UserInventory GetInv()
+        {
             ClaimsPrincipal currentUser = this.User;
             string currentUserID = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
             UserInventory Myinv = new UserInventory();
-            List <UserInventory > invList = context.userInventories.ToList();
+            List<UserInventory> invList = context.userInventories.ToList();
 
-            foreach (UserInventory inv in  invList )
+            foreach (UserInventory inv in invList)
             {
-                if (inv.UserID==currentUserID)
+                if (inv.UserID == currentUserID)
                 {
                     Myinv = inv;
                     break;
@@ -52,6 +71,19 @@ namespace GCFinalGroupProject.Controllers
             }
             return Myinv;
         }
-
+        //DEBUG
+        //put to change HeroId in userInventory table. 
+        [Authorize]
+        [HttpPut("AfterDeath")]
+        public UserInventory AfterDeath(string heroID)
+        {
+            ClaimsPrincipal currentUser = this.User;
+            string currentUserID = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+            UserInventory currentInv = context.userInventories.Where(x => x.UserID == currentUserID).First();
+            currentInv.HeroID = heroID;
+            context.userInventories.Update(currentInv);
+            context.SaveChanges();
+            return currentInv;
+        }
     }
 }
