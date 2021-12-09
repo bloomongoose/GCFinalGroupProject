@@ -26,9 +26,11 @@ export class BattleComponent {
   itemOneUsed: boolean;
   itemTwoUsed: boolean;
   creditsCollected: boolean;
-  consecutiveWins: number = parseInt(document.cookie.split(";")[1].substring(1)); //since this login instance.
+  
+  consecutiveWins: number = parseInt(document.cookie.split(";").find(c => c.includes("Wins=")).substring(6)); //since this login instance.
   earnings: number = 100;
   checkItem: number = 0;
+
 
   constructor(private heroService: HeroService, private itemService: ItemShopService) {
 
@@ -75,6 +77,7 @@ export class BattleComponent {
   }
 
   ngOnInit() {
+    console.log(document.cookie);
     this.heroService.getRandomHero().subscribe((villain: any) => {
       if (villain.powerstats.intelligence != "null") {
         this.villain = villain;
@@ -106,7 +109,7 @@ export class BattleComponent {
       this.itemOneUsed = true;
     }
     if (item == 5) {
-      this.playerHero.powerstats.speed += 80;
+      this.playerHero.powerstats.speed = (parseInt(this.playerHero.powerstats.speed) + 80) + "";
       this.itemOneUsed = true;
     }
     //0 damage, returns X% VillainDMG back to them. Reflect. 
@@ -151,9 +154,9 @@ export class BattleComponent {
     });
   }
 
-  Run() {
+  Run() {  
     this.consecutiveWins = 0;
-    document.cookie = "0";
+    document.cookie = "Wins=0";
     this.itemService.Earns(-100).subscribe((response: any) => {
       console.log(response);
     });
@@ -187,10 +190,14 @@ export class BattleComponent {
       this.creditsCollected = true;
     });
     this.consecutiveWins += 1;
-    let updatedValue: number = parseInt(document.cookie.split(";")[1].substring(1)) + 1;
-    console.log(document.cookie.split(";")[1].substring(1));
-    document.cookie = updatedValue.toString();
-
+   
+    console.log(this.consecutiveWins.toString());  
+    
+    let wins: string = document.cookie.split(";").find(c => c.includes("Wins=")).substring(0, 4) + "=" + this.consecutiveWins.toString();
+    
+    document.cookie = "Wins=" + this.consecutiveWins;
+    
+    console.log(document.cookie);
   }
   //newhero after death method. 
   AfterDeath(currentInv: UserInventory) {
@@ -214,7 +221,7 @@ export class BattleComponent {
       console.log(this.playerInv);
     });
     this.consecutiveWins = 0;
-    document.cookie = "0";
+    document.cookie = "Wins=0";
   }
   getHeroStats() {
     this.Damage = (
@@ -240,6 +247,7 @@ export class BattleComponent {
       + ((parseInt((this.villain.powerstats.intelligence)) / 20) * 10)
     );
   }
+
   SetupBattlePage() {
     this.heroService.GetInv().subscribe((inv: any) => {
       console.log(inv);

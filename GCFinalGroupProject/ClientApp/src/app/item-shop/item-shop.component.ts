@@ -13,6 +13,8 @@ import { UserInventory } from '../UserInventory';
 export class ItemShopComponent {
   currentInv: UserInventory = {} as UserInventory;
   item: ItemShop = {} as ItemShop;
+  message: string = "";
+
 
   allItems: ItemShop[] = [];
     /** ItemShop ctor */
@@ -37,6 +39,7 @@ export class ItemShopComponent {
     this.itemService.Buy(itemID, itemPrice).subscribe((response: any) => {
       console.log(response);
       this.updateInventory();
+      this.message = `You have purchased item ${itemID}`;
     });
   }
 

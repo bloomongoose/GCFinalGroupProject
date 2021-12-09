@@ -28,7 +28,7 @@ namespace GCFinalGroupProject
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    $"Server=asrfinalproject.database.windows.net;Database=RecipeDB;User Id={Secret.username}; Password={Secret.password}"));
+                    $"Server=asrfinalproject.database.windows.net;Database=HeroBattleDB;User Id={Secret.username}; Password={Secret.password}"));
 
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
