@@ -1,18 +1,28 @@
-<div>
-  <h3>Consecutive Wins on this Hero: {{consecutiveWins}}</h3>
-  <p>
-    {{playerHero.name}}<br />
-    {{itemOne}}<button *ngIf="playerInv.itemOne > 0" (click)="UseItemOne(playerInv.itemOne)" [disabled]="itemOneUsed">Use Item</button><br />
-    {{itemTwo}}<button *ngIf="playerInv.itemTwo > 0" (click)="UseItemTwo(playerInv.itemTwo)" [disabled]="itemTwoUsed">Use Item</button><br />
-    {{Damage}}
-    {{HP}}<br>
-    {{villain.name}}<br />
-    {{villainDmg}}
-    {{villainHP}}
-    {{villain.powerstats.speed}}
-  </p>
-
+<div class="container">
+  <div class="row">
+    <h3>Consecutive Wins on this Hero: {{consecutiveWins}}</h3>
+    </div>
+  <div class="row">
+    <div class="col-sm">
+      <h5>Hero</h5>
+      {{playerHero.name}}<br />
+      Item Slot 1: {{itemOne}}<button *ngIf="playerInv.itemOne > 0" (click)="UseItemOne(playerInv.itemOne)" [disabled]="itemOneUsed">Use Item</button><br />
+      Item Slot 2: {{itemTwo}}<button *ngIf="playerInv.itemTwo > 0" (click)="UseItemTwo(playerInv.itemTwo)" [disabled]="itemTwoUsed">Use Item</button><br />
+      Damage Points: {{Damage}}<br />
+      Hit Points: {{HP}}<br>
+      Speed: {{playerHero.powerstats.speed}}<br />
+    </div>
+    <div class="col-sm">
+      <h5>Opponent</h5>
+      {{villain.name}}<br />
+      Damage Points: {{villainDmg}}<br />
+      Hit Points: {{villainHP}}<br />
+      Speed: {{villain.powerstats.speed}}
+    </div>
+  </div>
+  <br />
   <div *ngIf="villainHP > 0 && HP > 0">
+    <h6>Character with highest speed attacks first</h6>
     <button (click)="Fight()">Fight!</button>
     <div>
       <button (click)="Run()" [routerLink]="'/ItemShop'">Run Away back to Igor's Supply Hut.</button>
@@ -22,7 +32,7 @@
 
   <div *ngIf="villainHP <= 0">
     <p>You won! You earned {{earnings}} Credits! Head back to the store to gear up!</p>
-    <button (click)="AfterWin()" [disabled]="creditsCollected" >Click To Collect Credits</button>     
+    <button (click)="AfterWin()" [disabled]="creditsCollected">Click To Collect Credits</button>
     <div *ngIf="creditsCollected">
       <button [routerLink]="'/ItemShop'">To Shop</button>
     </div>
