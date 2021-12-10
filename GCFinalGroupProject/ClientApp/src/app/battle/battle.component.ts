@@ -26,11 +26,9 @@ export class BattleComponent {
   itemOneUsed: boolean;
   itemTwoUsed: boolean;
   creditsCollected: boolean;
-  
-  consecutiveWins: number = parseInt(document.cookie.split(";").find(c => c.includes("Wins=")).substring(6)); //since this login instance.
+  //consecutiveWins: number = 0;
   earnings: number = 100;
   checkItem: number = 0;
-
 
   constructor(private heroService: HeroService, private itemService: ItemShopService) {
 
@@ -77,17 +75,16 @@ export class BattleComponent {
   }
 
   ngOnInit() {
-    console.log(document.cookie);
     this.heroService.getRandomHero().subscribe((villain: any) => {
       if (villain.powerstats.intelligence != "null") {
         this.villain = villain;
         this.SetupBattlePage();
+        
       }
       else {
         this.ngOnInit();
       }
-      this.earnings = 100;
-      this.earnings += ((this.consecutiveWins) * 10)
+     
     });
   }
 
@@ -146,7 +143,6 @@ export class BattleComponent {
     }
     this.EmptyItem(2);
   }
-
   EmptyItem(slot: number) {
     this.itemService.EmptySlot(slot).subscribe((response: any) => {
       console.log(response);
@@ -155,8 +151,9 @@ export class BattleComponent {
   }
 
   Run() {  
-    this.consecutiveWins = 0;
-    document.cookie = "Wins=0";
+    this.playerInv.consecutiveWins = 0;
+    this.itemService.ConsecutiveWins(this.playerInv.consecutiveWins).subscribe((response: any) => {
+    });
     this.itemService.Earns(-100).subscribe((response: any) => {
       console.log(response);
     });
@@ -188,16 +185,13 @@ export class BattleComponent {
     this.itemService.Earns(this.earnings).subscribe((response: any) => {
       console.log(response);
       this.creditsCollected = true;
+      this.playerInv.consecutiveWins += 1;
+      this.itemService.ConsecutiveWins(this.playerInv.consecutiveWins).subscribe((response: any) => {
+        console.log(response);
+      });
     });
-    this.consecutiveWins += 1;
    
-    console.log(this.consecutiveWins.toString());  
-    
-    let wins: string = document.cookie.split(";").find(c => c.includes("Wins=")).substring(0, 4) + "=" + this.consecutiveWins.toString();
-    
-    document.cookie = "Wins=" + this.consecutiveWins;
-    
-    console.log(document.cookie);
+
   }
   //newhero after death method. 
   AfterDeath(currentInv: UserInventory) {
@@ -210,6 +204,7 @@ export class BattleComponent {
           itemOne: currentInv.itemOne,
           itemTwo: currentInv.itemTwo,
           money: currentInv.money,
+          consecutiveWins: 0
         };
       }
       else {
@@ -217,11 +212,14 @@ export class BattleComponent {
       }
       this.heroService.AfterDeath(this.playerInv.heroID).subscribe((response: any) => {
         console.log(response);
+        this.playerInv.consecutiveWins = 0;
+        this.itemService.ConsecutiveWins(this.playerInv.consecutiveWins).subscribe((response: any) => {
+          console.log(response);
+        });
       });
       console.log(this.playerInv);
     });
-    this.consecutiveWins = 0;
-    document.cookie = "Wins=0";
+   
   }
   getHeroStats() {
     this.Damage = (
@@ -258,6 +256,10 @@ export class BattleComponent {
         this.getItemDetails();
         this.getHeroStats();
         this.getVillainStats();
+        
+        this.earnings = 100;
+        this.earnings += ((this.playerInv.consecutiveWins) * 10);
+        console.log(this.playerInv.consecutiveWins);
 
       });
     });

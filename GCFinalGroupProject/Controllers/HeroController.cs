@@ -28,7 +28,7 @@ namespace GCFinalGroupProject.Controllers
         {
             ClaimsPrincipal currentUser = this.User;
             string currentUserID = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
-            UserInventory result = new UserInventory() { UserID = currentUserID, HeroID = _HeroID, ItemOne = _ItemOne, ItemTwo = _ItemTwo, Money = _Money };
+            UserInventory result = new UserInventory() { UserID = currentUserID, HeroID = _HeroID, ItemOne = _ItemOne, ItemTwo = _ItemTwo, Money = _Money, ConsecutiveWins = 0 };
             context.userInventories.Add(result);
             context.SaveChanges();
             return result;

@@ -30,4 +30,8 @@ export class ItemShopService {
     return this.http.put(this.baseUrl + `api/item/Earns?money=${money}`, {});
   }
 
+  ConsecutiveWins(wins: number): any {
+    return this.http.put(this.baseUrl + `api/item/ConsWins?wins=${wins}`, {});
+  }
+
 }
