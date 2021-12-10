@@ -4,10 +4,27 @@
 
 
 
-<div>
-  <div *ngFor="let h of Heros;index as i">{{h.name}} <button (click)="SelectHero(i)" [routerLink]="'/ItemShop'">Select </button>  </div>
-  <div *ngIf="heros==null" > {{newHero.name}} </div>
+<div class="row"  style="justify-content:center">
+  <div *ngFor="let h of Heros;index as i">
+
+    <div class="column-sm-4 p-1">
+      <div class="card" style="width:300px">
+        <img class="card-img-top" src="{{h.image.url}}"  alt="Card image">
+        <div class="card-body">
+          <h3 class="card-title">   {{h.name}}</h3>
+          <h5>Alignment: {{h.biography.alignment}}</h5>
+          <p class="card-text">{{h.powerstats.intelligence}}</p>
+          <button (click)="SelectHero(i)" [routerLink]="'/ItemShop'">Select </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<div *ngIf="Heros == null">
+  {{newHero.name}}
   <!--revealing new hero stuff button-->
- 
+
   <button [routerLink]="'/ItemShop'">Go to Shop</button>
 </div>
