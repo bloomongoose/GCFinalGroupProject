@@ -4,6 +4,7 @@ import { Hero } from '../Hero';
 import { UserInventory } from '../UserInventory';
 
 
+
 @Component({
   selector: 'app-new-hero',
   templateUrl: './new-hero.component.html',
@@ -15,7 +16,7 @@ export class NewHeroComponent {
 
   newHero: Hero = {} as Hero;
   exists: boolean;
-
+  Heros: Hero[]=[];
 
   constructor(private heroService: HeroService) {
 
@@ -42,6 +43,8 @@ export class NewHeroComponent {
     });
   }
   NewAccount(hero: Hero): void {
+
+
     let userInv: UserInventory = {
       heroID: hero.id,
       itemOne: 0,
@@ -52,19 +55,40 @@ export class NewHeroComponent {
 
     this.heroService.newAccount(userInv).subscribe((response: any) => {
       console.log(response);
+
     });
   }
+
+  SelectHero(i: number) {
+    let h: Hero = {} as Hero;
+    h = this.Heros[i];
+    this.NewAccount(h);
+  }
+
+
   getHero(): void {
     this.exists = true;
     this.heroService.getRandomHero().subscribe((hero: Hero) => {
       console.log(hero);
-      if (hero.powerstats.intelligence != "null") {
-        this.newHero = hero;
-        this.NewAccount(hero);
-      }
-      else {
+
+
+      if (hero.powerstats.intelligence == "null") {
         this.getHero();
       }
+
+
+      else if (this.Heros.length < 3) {
+        this.newHero = hero;
+       
+        this.Heros.push(this.newHero);
+        console.log(this.newHero);
+        this.getHero();
+      }
+      console.log(hero);
+      console.log(this.Heros);
+
     });
+
+
   }
 }
