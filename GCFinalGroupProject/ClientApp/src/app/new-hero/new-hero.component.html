@@ -5,7 +5,8 @@
 
 
 <div>
-  
+  <div *ngFor="let h of Heros;index as i">{{h.name}} <button (click)="SelectHero(i)" [routerLink]="'/ItemShop'">Select </button>  </div>
+  <div *ngIf="heros==null" > {{newHero.name}} </div>
   <!--revealing new hero stuff button-->
  
   <button [routerLink]="'/ItemShop'">Go to Shop</button>

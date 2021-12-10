@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HeroService } from '../hero.service';
 import { Hero } from '../Hero';
 import { UserInventory } from '../UserInventory';
-import { get } from 'https';
+
 
 
 @Component({
