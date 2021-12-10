@@ -1,1 +1,1 @@
-export interface UserInventory {  heroID: string;  itemOne: number;  itemTwo: number;  money: number;}
+export interface UserInventory {  heroID: string;  itemOne: number;  itemTwo: number;  money: number;  consecutiveWins: number;}

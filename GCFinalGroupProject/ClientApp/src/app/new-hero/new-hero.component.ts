@@ -22,16 +22,8 @@ export class NewHeroComponent {
   }
 
   ngOnInit() {
-    this.exists = true;
-    console.log(document.cookie);
+    this.exists = true;  
     setTimeout(() => { this.CheckHeroExists() }, 1000 * 1);
-
-    document.cookie = "Wins=0";
-    console.log(document.cookie.split(";").find(c => c.includes("Wins=")).substring(6));
-
-    //document.cookie = "Wins=0";
-    //console.log(document.cookie);
-    //console.log(document.cookie.split(";").find(row => row.startsWith('Wins=')).split('=')[1]);
   }
 
   CheckHeroExists(): boolean {
@@ -55,6 +47,7 @@ export class NewHeroComponent {
       itemOne: 0,
       itemTwo: 0,
       money: 300,
+      consecutiveWins: 0
     };
 
     this.heroService.newAccount(userInv).subscribe((response: any) => {
