@@ -20,7 +20,8 @@ namespace GCFinalGroupProject.Models
         public string HeroID { get; set; } //first hero generated
         public int? ItemOne { get; set; } //null to begin
         public int? ItemTwo { get; set; } //null to begin
-        public int? Money { get; set; } //possibly starting money
+        public int Money { get; set; } //possibly starting money
+        public int ConsecutiveWins { get; set; } //per hero life.
 
     }
 }

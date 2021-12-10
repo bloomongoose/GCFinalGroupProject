@@ -95,5 +95,17 @@ namespace GCFinalGroupProject.Controllers
             context.SaveChanges();
             return X;
         }
+
+        [HttpPut("ConsWins")]
+        public UserInventory ConsecutiveWins(int wins)
+        {
+            ClaimsPrincipal currentUser = this.User;
+            string currentUserID = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+            UserInventory X = context.userInventories.Where(x => x.UserID == currentUserID).First();
+            X.ConsecutiveWins = wins;
+            context.Update(X);
+            context.SaveChanges();
+            return X;
+        }
     }
 }
