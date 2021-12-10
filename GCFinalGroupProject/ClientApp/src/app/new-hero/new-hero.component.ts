@@ -16,13 +16,15 @@ export class NewHeroComponent {
 
   newHero: Hero = {} as Hero;
   exists: boolean;
-  Heros: Hero[]=[];
+  Heros: Hero[] = [];
+
 
   constructor(private heroService: HeroService) {
 
   }
 
   ngOnInit() {
+
     this.exists = true;  
     setTimeout(() => { this.CheckHeroExists() }, 1000 * 1);
   }
@@ -43,8 +45,6 @@ export class NewHeroComponent {
     });
   }
   NewAccount(hero: Hero): void {
-
-
     let userInv: UserInventory = {
       heroID: hero.id,
       itemOne: 0,
@@ -70,13 +70,9 @@ export class NewHeroComponent {
     this.exists = true;
     this.heroService.getRandomHero().subscribe((hero: Hero) => {
       console.log(hero);
-
-
       if (hero.powerstats.intelligence == "null") {
         this.getHero();
       }
-
-
       else if (this.Heros.length < 3) {
         this.newHero = hero;
        

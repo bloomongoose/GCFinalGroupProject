@@ -1,30 +1,42 @@
-<div>
-  <button *ngIf="!exists" (click)="getHero()">Generate Hero</button>
-</div>
+
+
+<div class= "container">
+  <div>
+    <button *ngIf="!exists" (click)="getHero()">Generate Hero</button>
+    <div *ngIf="newHero != Heros[2]">
+      {{newHero.name}}
+      <button [routerLink]="'/ItemShop'">Go to Shop</button>
+    </div>
+  </div>
 
 
 
-<div class="row"  style="justify-content:center">
-  <div *ngFor="let h of Heros;index as i">
-
-    <div class="column-sm-4 p-1">
-      <div class="card" style="width:300px">
-        <img class="card-img-top" src="{{h.image.url}}"  alt="Card image">
-        <div class="card-body">
-          <h3 class="card-title">   {{h.name}}</h3>
-          <h5>Alignment: {{h.biography.alignment}}</h5>
-          <p class="card-text">{{h.powerstats.intelligence}}</p>
-          <button (click)="SelectHero(i)" [routerLink]="'/ItemShop'">Select </button>
+  <div class="row" style="justify-content:center">
+    <div *ngFor="let h of Heros;index as i">
+      <div class="column-sm-4 p-1">
+        <div class="card" style="width:300px">
+          <img class="card-img-top" src="{{h.image.url}}" alt="Card image">
+          <div class="card-body">
+            <h3 class="card-title">{{h.name}}</h3>
+            <h5>Alignment: {{h.biography.alignment}}</h5>
+            <div class="row">
+              <div class="col-sm-6">
+                <p class="card-text">
+                  INT: {{h.powerstats.intelligence}}<br />
+                  STR: {{h.powerstats.strength}}<br />
+                  SP:  {{h.powerstats.speed}}<br />
+                  DUR: {{h.powerstats.durability}}<br />
+                  POW: {{h.powerstats.power}}<br />
+                  COM: {{h.powerstats.combat}}<br />
+                </p>
+              </div>
+            </div>
+            <button (click)="SelectHero(i)" [routerLink]="'/ItemShop'">Select </button>
+          </div>
         </div>
       </div>
     </div>
-
   </div>
 
-</div>
-<div *ngIf="Heros == null">
-  {{newHero.name}}
-  <!--revealing new hero stuff button-->
-
-  <button [routerLink]="'/ItemShop'">Go to Shop</button>
+  
 </div>
