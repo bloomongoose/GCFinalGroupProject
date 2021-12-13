@@ -192,8 +192,7 @@ export class BattleComponent {
     });
    
 
-  }
-  //newhero after death method. 
+  } 
   AfterDeath(currentInv: UserInventory) {
     this.heroService.getRandomHero().subscribe((hero: Hero) => {
       console.log(hero);
