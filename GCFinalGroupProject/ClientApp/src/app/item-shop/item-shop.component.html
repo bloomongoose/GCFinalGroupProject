@@ -1,7 +1,15 @@
 <div>
-  <div><p>Player Credits: {{currentInv.money}}</p> {{message}}</div>
+  <div><p>Player Credits: {{currentInv.money}}</p><p>{{message}}</p></div>
   <div>
     <p *ngFor="let i of allItems; index as d">{{d + 1}}. {{i.itemName}} | {{i.itemDescription}} | Price: {{i.itemPrice}} Credits <button (click)="purchaseItem(i.id, i.itemPrice)">Buy</button></p> 
+  </div>
+  <div>
+    <p>
+      Item Slot 1: {{allItems[currentInv.itemOne-1].itemName}}
+    </p>
+    <p>
+      Item Slot 2: {{allItems[currentInv.itemTwo -1 ].itemName}}
+    </p>
   </div>
   <div>
     <button [routerLink]="'/Battle'">CLICK ONLY IF READY TO BATTLE INTENSELY FOR .02 SECONDS</button>
