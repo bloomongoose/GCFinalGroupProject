@@ -1,1 +1,166 @@
-﻿
+
+
+/* Mobile */
+@media only screen and (min-width: 360px) and (min-height: 640px){
+  .ItemBG {
+    background-image: url('https://cdna.artstation.com/p/assets/images/images/016/574/322/large/yang-sohyeon-2-1.jpg?1552713509') !important;
+    background-repeat: no-repeat !important;
+    padding-top: 60vh;
+    padding-bottom: 20vh;
+    background-size: cover !important;
+    position: page;
+    margin: auto;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  .shop {
+    background-color: #B9BEBA;
+    box-shadow: 5px 5px 8px #888888;
+    opacity: 0.85;
+    position: absolute;
+    right: 14vw;
+    left: 14vw;
+    top: 11vh;
+    padding-left: 15px;
+  }
+
+  .shopINV {
+    background-color: #B9BEBA;
+    box-shadow: 5px 5px 8px #888888;
+    opacity: 0.85;
+    position: absolute;
+    right: 14vw;
+    left: 14vw;
+    top: 90vh;
+    padding-left: 15px;
+  }
+
+  .cringe {
+    font-size: 12px !important;
+  }
+}
+
+/* Large devices */
+@media only screen and (min-width: 768px) and (min-height: 1024px) {
+  .ItemBG {
+    background-image: url('https://cdna.artstation.com/p/assets/images/images/016/574/322/large/yang-sohyeon-2-1.jpg?1552713509') !important;
+    background-repeat: no-repeat !important;
+    padding-top: 40vh;
+    padding-bottom: 40vh;
+    background-size: cover !important;
+    position: page;
+    margin: auto;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  .shop {
+    background-color: #B9BEBA;
+    box-shadow: 5px 5px 8px #888888;
+    opacity: 0.85;
+    position: absolute;
+    right: 12vw;
+    left: 12vw;
+    top: 8vh;
+    padding-left: 20px;
+  }
+
+  .shopINV {
+    background-color: #B9BEBA;
+    box-shadow: 5px 5px 8px #888888;
+    opacity: 0.85;
+    position: absolute;
+    right: 12vw;
+    left: 12vw;
+    top: 70vh;
+    padding-left: 20px;
+  }
+
+  .cringe {
+    font-size: 24px !important;
+  }
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1280px) and (min-height: 720px) {
+  .ItemBG {
+    background-image: url('https://cdna.artstation.com/p/assets/images/images/016/574/322/large/yang-sohyeon-2-1.jpg?1552713509') !important;
+    background-repeat: no-repeat !important;
+    padding-top: 40vh;
+    padding-bottom: 40vh;
+    background-size: cover !important;
+    position: page;
+    margin: auto;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  .shop {
+    background-color: #B9BEBA;
+    box-shadow: 5px 5px 8px #888888;
+    opacity: 0.85;
+    position: absolute;
+    right: 15vw;
+    left: 15vw;
+    top: 11vh;
+    padding-left: 20px;
+  }
+
+  .shopINV {
+    background-color: #B9BEBA;
+    box-shadow: 5px 5px 8px #888888;
+    opacity: 0.85;
+    position: absolute;
+    right: 15vw;
+    left: 15vw;
+    top: 67.5vh;
+    padding-left: 20px;
+  }
+
+  .cringe {
+    font-size: 24px !important;
+  }
+}
+
+@media only screen and (min-width: 1920px) and (min-height: 1080px){
+  .ItemBG {
+    background-image: url('https://cdna.artstation.com/p/assets/images/images/016/574/322/large/yang-sohyeon-2-1.jpg?1552713509') !important;
+    background-repeat: no-repeat !important;
+    padding-top: 40vh;
+    padding-bottom: 40vh;
+    background-size: cover !important;
+    position: page;
+    margin: auto;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  .shop {
+    background-color: #B9BEBA;
+    box-shadow: 5px 5px 8px #888888;
+    opacity: 0.85;
+    position: absolute;
+    right: 23vw;
+    left: 23vw;
+    top: 17vh;
+    padding-left: 20px;
+  }
+
+  .shopINV {
+    background-color: #B9BEBA;
+    box-shadow: 5px 5px 8px #888888;
+    opacity: 0.85;
+    position: absolute;
+    right: 23vw;
+    left: 23vw;
+    top: 67.5vh;
+    padding-left: 20px;
+  }
+
+  .cringe {
+    font-size: 24px !important;
+  }
+}
+

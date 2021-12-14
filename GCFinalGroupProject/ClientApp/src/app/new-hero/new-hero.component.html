@@ -1,16 +1,6 @@
 
 
-<div class= "container">
-  <div>
-    <button *ngIf="!exists" (click)="getHero()">Generate Hero</button>
-    <div *ngIf="newHero != Heros[2]">
-      {{newHero.name}}
-      <button [routerLink]="'/ItemShop'">Go to Shop</button>
-    </div>
-  </div>
-
-
-
+<div class="container">
   <div class="row" style="justify-content:center">
     <div *ngFor="let h of Heros;index as i">
       <div class="column-sm-4 p-1">
@@ -31,12 +21,15 @@
                 </p>
               </div>
             </div>
-            <button (click)="SelectHero(i)" [routerLink]="'/ItemShop'">Select </button>
+            <button class="btn-primary btn" (click)="SelectHero(i)" [routerLink]="'/ItemShop'">Select </button>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <div class="row" style="justify-content: center">
+    <button class="btn-primary btn-lg" *ngIf="!exists" (click)="getHero()">Generate Hero</button>
+    <button class="btn-primary btn" [routerLink]="'/ItemShop'">Go to Shop</button>
+  </div>
 
-  
 </div>

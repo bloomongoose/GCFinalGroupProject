@@ -2,10 +2,22 @@ a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
+  color: #CCD1CD !important;
+}
+
+a.nav-link {
+  color: #CCD1CD !important;
+}
+
+.navbar {
+  background-color: #953437 !important;
+  color: #CCD1CD !important;
+  font-size: 19px;
 }
 
 html {
-  font-size: 14px;
+  font-size: 19px;
+  
 }
 @media (min-width: 768px) {
   html {
@@ -14,5 +26,5 @@ html {
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+  box-shadow: 0 .15rem .55rem rgba(0, 0, 0, .05);
 }

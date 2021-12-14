@@ -15,6 +15,8 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
 import { NewHeroComponent } from './new-hero/new-hero.component';
 import { ItemShopComponent } from './item-shop/item-shop.component';
 import { BattleComponent } from './battle/battle.component';
+import { FaqComponent } from './faq/faq.component';
+import { AfterdeathComponent } from './afterdeath/afterdeath.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { BattleComponent } from './battle/battle.component';
     FetchDataComponent,
     NewHeroComponent,
     ItemShopComponent,
-    BattleComponent
+    BattleComponent,
+    FaqComponent,
+    AfterdeathComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -38,7 +42,9 @@ import { BattleComponent } from './battle/battle.component';
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       { path: 'newHero', component: NewHeroComponent, canActivate: [AuthorizeGuard] },
       { path: 'ItemShop', component: ItemShopComponent, canActivate: [AuthorizeGuard] },
-      { path: 'Battle', component: BattleComponent, canActivate: [AuthorizeGuard]} 
+      { path: 'Battle', component: BattleComponent, canActivate: [AuthorizeGuard] },
+      { path: 'Death', component: AfterdeathComponent },
+      { path: 'FAQ', component: FaqComponent }
     ])
   ],
   providers: [
