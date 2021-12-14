@@ -1,0 +1,22 @@
+<div class="container">
+  <div *ngIf="newHero.image.url != null" class="card" style="width:300px;">
+    <img class="card-img-top" src="{{newHero.image.url}}" alt="Card image">
+    <div class="card-body">
+      <h3 class="card-title">{{newHero.name}}</h3>
+      <h5>Alignment: {{newHero.biography.alignment}}</h5>
+      <div class="row">
+        <div class="col-sm-6">
+          <p class="card-text">
+            INT: {{newHero.powerstats.intelligence}}<br />
+            STR: {{newHero.powerstats.strength}}<br />
+            SP:  {{newHero.powerstats.speed}}<br />
+            DUR: {{newHero.powerstats.durability}}<br />
+            POW: {{newHero.powerstats.power}}<br />
+            COM: {{newHero.powerstats.combat}}<br />
+          </p>
+        </div>
+      </div>
+      <button class="btn-primary btn" [routerLink]="'/ItemShop'">Go to Shop</button>
+    </div>
+  </div>
+</div>

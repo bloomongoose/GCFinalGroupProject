@@ -1,47 +1,77 @@
 <div class="container">
   <div class="row">
-    <h3>Consecutive Wins on this Hero: {{playerInv.consecutiveWins}}</h3>
-    </div>
+    <h3 style="color: #B9BEBA">Consecutive Wins on this Hero: {{playerInv.consecutiveWins}}</h3>
+  </div>
   <div class="row">
-    <div class="col-sm">
-      <h5>Hero</h5>
-      {{playerHero.name}}<br />
-      Item Slot 1: {{itemOne}}<button *ngIf="playerInv.itemOne > 0" (click)="UseItemOne(playerInv.itemOne)" [disabled]="itemOneUsed">Use Item</button><br />
-      Item Slot 2: {{itemTwo}}<button *ngIf="playerInv.itemTwo > 0" (click)="UseItemTwo(playerInv.itemTwo)" [disabled]="itemTwoUsed">Use Item</button><br />
-      Damage Points: {{Damage}}<br />
-      Hit Points: {{HP}}<br>
-      Speed: {{playerHero.powerstats.speed}}<br />
+    <div class="col-4">
+      <div class="card" style="width: 20rem;">
+        <img class="card-img-top" src="{{playerHero.image.url}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{playerHero.name}}</h5>
+          
+
+            <div class="row">
+              <div class="col-7">
+               {{itemOne}}<br />
+               {{itemTwo}}
+              </div>
+              <div class="col-5">
+                <button class="btn-primary btn-xs" *ngIf="playerInv.itemOne > 0" (click)="UseItemOne(playerInv.itemOne)" [disabled]="itemOneUsed">Use Item</button>
+                <button class="btn-primary btn-xs" *ngIf="playerInv.itemTwo > 0" (click)="UseItemTwo(playerInv.itemTwo)" [disabled]="itemTwoUsed">Use Item</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Damage Points: {{Damage}}<br />
+                Hit Points: {{HP}}<br>
+                Speed: {{playerHero.powerstats.speed}}<br />
+              </div>
+            </div>
+          
+        </div>
+      </div>
     </div>
-    <div class="col-sm">
-      <h5>Opponent</h5>
-      {{villain.name}}<br />
-      Damage Points: {{villainDmg}}<br />
-      Hit Points: {{villainHP}}<br />
-      Speed: {{villain.powerstats.speed}}
+    <div class="col-2" style="color: #C72523; font-size: 90px; font-family: Algerian; justify-content:center; position:center; padding-top: 12rem">VS</div>
+    <div class="col-4">
+      <div class="card" style="width: 20rem;">
+        <img class="card-img-top" src="{{villain.image.url}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{villain.name}}</h5>
+          <p class="card-text">
+
+            Damage Points: {{villainDmg}}<br />
+            Hit Points: {{villainHP}}<br>
+            Speed: {{villain.powerstats.speed}}<br />
+          </p>
+        </div>
+      </div>
     </div>
   </div>
-  <br />
+
+
+
   <div *ngIf="villainHP > 0 && HP > 0">
-    <h6>Character with highest speed attacks first</h6>
-    <button (click)="Fight()">Fight!</button>
+    <h6 style="color: #B9BEBA">Character with highest speed attacks first</h6>
+    <button class="btn-primary btn" (click)="Fight()">Fight!</button>
     <div>
-      <button (click)="Run()" [routerLink]="'/ItemShop'">Run Away back to Igor's Supply Hut.</button>
-      <p>Incur 100 credits lost and consecutive wins resets to 0.</p>
+      <button class="btn-warning btn" (click)="Run()" [routerLink]="'/ItemShop'">Run Away back to Igor's Supply Hut.</button>
+      <p style="color: #B9BEBA">Incur 100 credits lost and consecutive wins resets to 0.</p>
     </div>
   </div>
 
   <div *ngIf="villainHP <= 0">
-    <p>You won! You earned {{earnings}} Credits! Head back to the store to gear up!</p>
-    <button (click)="AfterWin()" [disabled]="creditsCollected">Click To Collect Credits</button>
+    <p style="color: #B9BEBA">You won! You earned {{earnings}} Credits! Head back to the store to gear up!</p>
+    <button class="btn-primary btn" (click)="AfterWin()" [disabled]="creditsCollected">Click To Collect Credits</button>
     <div *ngIf="creditsCollected">
-      <button [routerLink]="'/ItemShop'">To Shop</button>
+      <button class="btn-primary btn" [routerLink]="'/ItemShop'">To Shop</button>
     </div>
   </div>
 
   <div *ngIf="HP <= 0">
     <p>You Lose!</p>
     <div>
-      <button (click)="AfterDeath(playerInv)" [routerLink]="'/newHero'">Generate New Hero Cause yours Died</button>
+      <button class="btn-primary btn" (click)="AfterDeath(playerInv)" [routerLink]="'/Death'">Generate New Hero Cause yours Died</button>
     </div>
   </div>
+
 </div>

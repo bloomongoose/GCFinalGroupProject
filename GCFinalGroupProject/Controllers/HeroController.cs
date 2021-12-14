@@ -71,8 +71,8 @@ namespace GCFinalGroupProject.Controllers
             }
             return Myinv;
         }
-        //DEBUG
-        //put to change HeroId in userInventory table. 
+     
+   
         [Authorize]
         [HttpPut("AfterDeath")]
         public UserInventory AfterDeath(string heroID)
