@@ -42,7 +42,7 @@ body, html {
   border-color: #447AA1;
   font-weight:400;
   letter-spacing: 0.125em;
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
 }
 
   .btn-primary:hover,
@@ -54,8 +54,46 @@ body, html {
     border-color: #5C9BB5;
   }
 
+.btn-success {
+  color: #fff;
+  background-color: #64A162;
+  border-color: #92BE8D;
+  font-weight: 400;
+  letter-spacing: 0.125em;
+  border-radius: 0.3rem;
+}
+
+  .btn-success:hover,
+  .btn-success:active,
+  .btn-success:focus,
+  .btn-success.active {
+    background: #64A162;
+    color: #ffffff;
+    border-color: #92BE8D;
+  }
+
+.btn-warning {
+  color: #525452;
+  background-color: #B0AD48;
+  border-color: #EBE500;
+  font-weight: 400;
+  letter-spacing: 0.125em;
+  border-radius: 0.3rem;
+}
+
+  .btn-warning:hover,
+  .btn-warning:active,
+  .btn-warning:focus,
+  .btn-warning.active {
+    background: #B0AD48;
+    color: #ffffff;
+    border-color: #EBE500;
+  }
+
+
+
 img {
-  width:auto;
+  width: auto;
   height: auto;
 }
 
