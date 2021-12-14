@@ -1,5 +1,9 @@
 
 body{margin-top:20px;}
+
+.title{
+    color:aliceblue;
+}
 .section_padding_130 {
     padding-top: 130px;
     padding-bottom: 130px;
@@ -85,3 +89,5 @@ body{margin-top:20px;}
         font-size: 13px;
     }
 }
+
+
