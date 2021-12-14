@@ -1,0 +1,11 @@
+
+.footer {
+  background-color: #1E2639;
+  color: #808080 !important;
+}
+
+hr {
+  height: 2px;
+  background-color: #808080;
+  border: none;
+}

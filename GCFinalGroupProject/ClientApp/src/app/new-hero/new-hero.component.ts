@@ -44,6 +44,7 @@ export class NewHeroComponent {
       }
     });
   }
+
   NewAccount(hero: Hero): void {
     let userInv: UserInventory = {
       heroID: hero.id,

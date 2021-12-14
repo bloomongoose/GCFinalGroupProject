@@ -8,26 +8,33 @@
         <img class="card-img-top" src="{{playerHero.image.url}}" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">{{playerHero.name}}</h5>
-          
-
-            <div class="row">
-              <div class="col-7">
-               {{itemOne}}<br />
-               {{itemTwo}}
-              </div>
-              <div class="col-5">
-                <button class="btn-primary btn-xs" *ngIf="playerInv.itemOne > 0" (click)="UseItemOne(playerInv.itemOne)" [disabled]="itemOneUsed">Use Item</button>
-                <button class="btn-primary btn-xs" *ngIf="playerInv.itemTwo > 0" (click)="UseItemTwo(playerInv.itemTwo)" [disabled]="itemTwoUsed">Use Item</button>
-              </div>
+          <div class="row">
+            <div class="col">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightning-fill" viewBox="0 0 16 16">
+                <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5z" />
+              </svg>
+              {{Damage}}<br />
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+              </svg>
+              {{HP}}<br>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-speedometer" viewBox="0 0 16 16">
+                <path d="M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2zM3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.389.389 0 0 0-.029-.518z" />
+                <path fill-rule="evenodd" d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.945 11.945 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0z" />
+              </svg>
+              {{playerHero.powerstats.speed}}<br />
             </div>
-            <div class="row">
-              <div class="col">
-                Damage Points: {{Damage}}<br />
-                Hit Points: {{HP}}<br>
-                Speed: {{playerHero.powerstats.speed}}<br />
-              </div>
+          </div>
+          <div class="row">
+            <div class="col-7">
+              {{itemOne}}<br />
+              {{itemTwo}}
             </div>
-          
+            <div class="col-5">
+              <button class="btn-primary btn-xs" *ngIf="playerInv.itemOne > 0" (click)="UseItemOne(playerInv.itemOne)" [disabled]="itemOneUsed">Use Item</button>
+              <button class="btn-primary btn-xs" *ngIf="playerInv.itemTwo > 0" (click)="UseItemTwo(playerInv.itemTwo)" [disabled]="itemTwoUsed">Use Item</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -38,10 +45,16 @@
         <div class="card-body">
           <h5 class="card-title">{{villain.name}}</h5>
           <p class="card-text">
-
-            Damage Points: {{villainDmg}}<br />
-            Hit Points: {{villainHP}}<br>
-            Speed: {{villain.powerstats.speed}}<br />
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightning-fill" viewBox="0 0 16 16">
+              <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5z" />
+            </svg> {{villainDmg}}<br />
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+            </svg> {{villainHP}}<br>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-speedometer" viewBox="0 0 16 16">
+              <path d="M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2zM3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.389.389 0 0 0-.029-.518z" />
+              <path fill-rule="evenodd" d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.945 11.945 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0z" />
+            </svg> {{villain.powerstats.speed}}<br />
           </p>
         </div>
       </div>
@@ -54,24 +67,44 @@
     <h6 style="color: #B9BEBA">Character with highest speed attacks first</h6>
     <button class="btn-primary btn" (click)="Fight()">Fight!</button>
     <div>
-      <button class="btn-warning btn" (click)="Run()" [routerLink]="'/ItemShop'">Run Away back to Igor's Supply Hut.</button>
+      <button class="btn-warning btn" (click)="Run()">
+        Run Away back to Igor's shop <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z" />
+          <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z" />
+        </svg>
+      </button>
       <p style="color: #B9BEBA">Incur 100 credits lost and consecutive wins resets to 0.</p>
     </div>
   </div>
 
   <div *ngIf="villainHP <= 0">
     <p style="color: #B9BEBA">You won! You earned {{earnings}} Credits! Head back to the store to gear up!</p>
-    <button class="btn-primary btn" (click)="AfterWin()" [disabled]="creditsCollected">Click To Collect Credits</button>
+    <button class="btn-success btn" (click)="AfterWin()" [disabled]="creditsCollected">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-award" viewBox="0 0 16 16">
+        <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z" />
+        <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
+      </svg>Collect Credits<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-award" viewBox="0 0 16 16">
+        <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z" />
+        <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
+      </svg>
+    </button>
     <div *ngIf="creditsCollected">
-      <button class="btn-primary btn" [routerLink]="'/ItemShop'">To Shop</button>
+      <button class="btn-primary btn" [routerLink]="'/ItemShop'">
+
+        To Shop
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
+          <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z" />
+        </svg>
+      </button>
     </div>
   </div>
 
   <div *ngIf="HP <= 0">
     <p>You Lose!</p>
     <div>
-      <button class="btn-primary btn" (click)="AfterDeath(playerInv)" [routerLink]="'/Death'">Generate New Hero Cause yours Died</button>
+      <button class="btn-primary btn" (click)="AfterDeath(playerInv)" [routerLink]="'/Death'">Generate New Hero</button>
     </div>
   </div>
 
 </div>
+<app-footer></app-footer>

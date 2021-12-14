@@ -3,14 +3,14 @@ import { HeroService } from '../hero.service';
 import { ItemShopService } from '../item-shop.service';
 import { UserInventory } from '../UserInventory';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-battle',
   templateUrl: './battle.component.html',
   styleUrls: ['./battle.component.css']
 })
+
 /** Battle component*/
 export class BattleComponent {
   /** Battle ctor */
@@ -30,7 +30,7 @@ export class BattleComponent {
   earnings: number = 100;
   checkItem: number = 0;
 
-  constructor(private heroService: HeroService, private itemService: ItemShopService) {
+  constructor(private heroService: HeroService, private itemService: ItemShopService, private router: Router) {
 
   }
 
@@ -53,6 +53,9 @@ export class BattleComponent {
     else if (this.playerInv.itemOne == 6) {
       this.itemOne = "Reflection Potion";
     }
+    else if (this.playerInv.itemOne == 7) {
+      this.itemOne = "Excalibur";
+    }
 
     if (this.playerInv.itemTwo == 1) {
       this.itemTwo = "Health Kit";
@@ -72,21 +75,15 @@ export class BattleComponent {
     else if (this.playerInv.itemTwo == 6) {
       this.itemTwo = "Reflection Potion";
     }
+    else if (this.playerInv.itemTwo == 7) {
+      this.itemTwo = "Excalibur";
+    }
   }
 
   ngOnInit() {
-    this.heroService.getRandomHero().subscribe((villain: any) => {
-      if (villain.powerstats.intelligence != "null") {
-        this.villain = villain;
-        this.SetupBattlePage();
-        
-      }
-      else {
-        this.ngOnInit();
-      }
-     
-    });
+    this.SetupBattlePage();
   }
+
 
   UseItemOne(item: number) {
     if (item == 1) {
@@ -114,8 +111,13 @@ export class BattleComponent {
       this.checkItem = 6;
       this.itemOneUsed = true;
     }
+    if (item == 7) {
+      this.Damage += 350;
+      this.itemOneUsed = true;
+    }
     this.EmptyItem(1);
   }
+
   UseItemTwo(item: number) {
     if (item == 1) {
       this.HP += 50;
@@ -134,15 +136,20 @@ export class BattleComponent {
       this.itemTwoUsed = true;
     }
     if (item == 5) {
-      this.playerHero.powerstats.speed += 80;
+      this.playerHero.powerstats.speed = (parseInt(this.playerHero.powerstats.speed) + 80) + "";
       this.itemTwoUsed = true;
     }
     if (item == 6) {
       this.checkItem = 6;
       this.itemTwoUsed = true;
     }
+    if (item == 7) {
+      this.Damage += 350;
+      this.itemTwoUsed = true;
+    }
     this.EmptyItem(2);
   }
+
   EmptyItem(slot: number) {
     this.itemService.EmptySlot(slot).subscribe((response: any) => {
       console.log(response);
@@ -150,12 +157,13 @@ export class BattleComponent {
     });
   }
 
-  Run() {  
+  Run() {
     this.playerInv.consecutiveWins = 0;
     this.itemService.ConsecutiveWins(this.playerInv.consecutiveWins).subscribe((response: any) => {
-    });
-    this.itemService.Earns(-100).subscribe((response: any) => {
-      console.log(response);
+      this.itemService.Earns(-100).subscribe((response: any) => {
+        console.log(response);
+        this.router.navigate(["ItemShop"]);
+      });
     });
   }
 
@@ -163,7 +171,7 @@ export class BattleComponent {
     //speed stat determines who goes first. if the next attack kills the enemy, dont allow enemy to attack back. 
     //for reflection item only. otherwise executes normal fight conditions. 
     if (this.checkItem == 6) {
-      this.villainHP -= (this.villainDmg * 1.5);    
+      this.villainHP -= (this.villainDmg * 1.5);
       this.checkItem = 0;
     }
     else {
@@ -181,6 +189,7 @@ export class BattleComponent {
       }
     }
   }
+
   AfterWin() {
     this.itemService.Earns(this.earnings).subscribe((response: any) => {
       console.log(response);
@@ -190,9 +199,10 @@ export class BattleComponent {
         console.log(response);
       });
     });
-   
 
-  } 
+
+  }
+
   AfterDeath(currentInv: UserInventory) {
     this.heroService.getRandomHero().subscribe((hero: Hero) => {
       console.log(hero);
@@ -218,8 +228,9 @@ export class BattleComponent {
       });
       console.log(this.playerInv);
     });
-   
+
   }
+
   getHeroStats() {
     this.Damage = (
       (parseInt((this.playerHero.powerstats.strength)) * 1.3)
@@ -232,6 +243,7 @@ export class BattleComponent {
       + ((parseInt((this.playerHero.powerstats.intelligence)) / 20) * 10)
     );
   }
+
   getVillainStats() {
     this.villainDmg = (
       (parseInt((this.villain.powerstats.strength)) * 1.3)
@@ -245,22 +257,42 @@ export class BattleComponent {
     );
   }
 
+  CompileStats() {
+    this.heroService.getById(`${this.playerInv.heroID}`).subscribe((hero: any) => {
+      this.playerHero = hero;
+      console.log(hero);
+      this.getItemDetails();
+      this.getHeroStats();
+      this.getVillainStats();
+      this.earnings = 100;
+      this.earnings += ((this.playerInv.consecutiveWins) * 10);
+      console.log(this.playerInv.consecutiveWins);
+    });
+  }
+
   SetupBattlePage() {
     this.heroService.GetInv().subscribe((inv: any) => {
       console.log(inv);
       this.playerInv = inv;
-      this.heroService.getById(`${this.playerInv.heroID}`).subscribe((hero: any) => {
-        this.playerHero = hero;
-        console.log(hero);
-        this.getItemDetails();
-        this.getHeroStats();
-        this.getVillainStats();
-        
-        this.earnings = 100;
-        this.earnings += ((this.playerInv.consecutiveWins) * 10);
-        console.log(this.playerInv.consecutiveWins);
-
-      });
+      if (this.playerInv.consecutiveWins == 10) {
+        this.heroService.getById("503").subscribe((villain: any) => {
+          this.villain = villain;
+          this.CompileStats();
+        });
+      }
+      else {
+        this.heroService.getRandomHero().subscribe((villain: any) => {
+          if (villain.powerstats.intelligence != "null") {
+            this.villain = villain;
+            this.CompileStats();
+          }
+          else {
+            this.SetupBattlePage();
+          }
+        });
+      }
+   
     });
   }
+
 }
