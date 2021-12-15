@@ -31,9 +31,10 @@ export class BattleComponent {
   checkItem: number = 0;
 
   constructor(private heroService: HeroService, private itemService: ItemShopService) {
-
+    
   }
 
+  //sets the itemone string to the name of an item so we can display it.
   getItemDetails() {
     if (this.playerInv.itemOne == 1) {
       this.itemOne = "Health Kit";
@@ -88,9 +89,10 @@ export class BattleComponent {
     });
   }
 
+  //uses item 1
   UseItemOne(item: number) {
     if (item == 1) {
-      this.HP += 50;
+      this.HP -= 600;
       this.itemOneUsed = true;
     }
     if (item == 2) {
@@ -116,9 +118,11 @@ export class BattleComponent {
     }
     this.EmptyItem(1);
   }
+
+  //uses item 2
   UseItemTwo(item: number) {
     if (item == 1) {
-      this.HP += 50;
+      this.HP -= 600;
       this.itemTwoUsed = true;
     }
     if (item == 2) {
@@ -143,6 +147,8 @@ export class BattleComponent {
     }
     this.EmptyItem(2);
   }
+
+  //remmoves item
   EmptyItem(slot: number) {
     this.itemService.EmptySlot(slot).subscribe((response: any) => {
       console.log(response);
@@ -150,6 +156,7 @@ export class BattleComponent {
     });
   }
 
+  //returns the player to the shop, sets consecutive wins to zero and removes 100 dollars from player 
   Run() {  
     this.playerInv.consecutiveWins = 0;
     this.itemService.ConsecutiveWins(this.playerInv.consecutiveWins).subscribe((response: any) => {
@@ -159,8 +166,9 @@ export class BattleComponent {
     });
   }
 
+  //deals the damage when the player clicks fight.
+  //speed stat determines who goes first. if the next attack kills the enemy, dont allow enemy to attack back. 
   Fight() {
-    //speed stat determines who goes first. if the next attack kills the enemy, dont allow enemy to attack back. 
     //for reflection item only. otherwise executes normal fight conditions. 
     if (this.checkItem == 6) {
       this.villainHP -= (this.villainDmg * 1.5);    
@@ -181,6 +189,8 @@ export class BattleComponent {
       }
     }
   }
+
+  //allows user to collect credits and return to shop after defeating opponent.
   AfterWin() {
     this.itemService.Earns(this.earnings).subscribe((response: any) => {
       console.log(response);
@@ -190,9 +200,10 @@ export class BattleComponent {
         console.log(response);
       });
     });
-   
+  }
 
-  } 
+
+  //changes players hero when he dies and sets consecutive wins to zero.
   AfterDeath(currentInv: UserInventory) {
     this.heroService.getRandomHero().subscribe((hero: Hero) => {
       console.log(hero);
@@ -220,28 +231,30 @@ export class BattleComponent {
     });
    
   }
+
+  //gets the damage and hp of the hero and villain.
   getHeroStats() {
     this.Damage = (
-      (parseInt((this.playerHero.powerstats.strength)) * 1.3)
+      Math.floor( (parseInt((this.playerHero.powerstats.strength)) * 1.3)
       + (parseInt((this.playerHero.powerstats.power)) * 1.5)
-      + (parseInt(this.playerHero.powerstats.combat))
+      + (parseInt(this.playerHero.powerstats.combat)))
     );
     this.HP = (
-      (parseInt((this.playerHero.powerstats.durability)) * 5)
+      Math.floor((parseInt((this.playerHero.powerstats.durability)) * 5)
       + ((parseInt((this.playerHero.powerstats.speed)) / 20) * 10)
-      + ((parseInt((this.playerHero.powerstats.intelligence)) / 20) * 10)
+      + ((parseInt((this.playerHero.powerstats.intelligence)) / 20) * 10))
     );
   }
   getVillainStats() {
     this.villainDmg = (
-      (parseInt((this.villain.powerstats.strength)) * 1.3)
+      Math.floor((parseInt((this.villain.powerstats.strength)) * 1.3)
       + (parseInt((this.villain.powerstats.power)) * 1.5)
-      + (parseInt(this.villain.powerstats.combat))
+      + (parseInt(this.villain.powerstats.combat)))
     );
     this.villainHP = (
-      (parseInt((this.villain.powerstats.durability)) * 5)
+      Math.floor((parseInt((this.villain.powerstats.durability)) * 5)
       + ((parseInt((this.villain.powerstats.speed)) / 20) * 10)
-      + ((parseInt((this.villain.powerstats.intelligence)) / 20) * 10)
+      + ((parseInt((this.villain.powerstats.intelligence)) / 20) * 10))
     );
   }
 

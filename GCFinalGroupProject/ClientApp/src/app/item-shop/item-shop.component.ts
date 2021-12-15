@@ -35,6 +35,7 @@ export class ItemShopComponent {
     }));
   }
 
+  //subtracts money then calls updateInventory
   purchaseItem(itemID: number, itemPrice: number) {
     this.itemService.Buy(itemID, itemPrice).subscribe((response: any) => {
       console.log(response);
@@ -43,6 +44,7 @@ export class ItemShopComponent {
     });
   }
 
+  //gets user inventory from DB
   updateInventory() {
     this.heroService.GetInv().subscribe((inv: UserInventory) => {
       console.log(inv);

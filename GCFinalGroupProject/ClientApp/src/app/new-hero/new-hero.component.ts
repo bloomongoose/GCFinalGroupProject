@@ -44,6 +44,8 @@ export class NewHeroComponent {
       }
     });
   }
+
+  //creates a new account
   NewAccount(hero: Hero): void {
     let userInv: UserInventory = {
       heroID: hero.id,
@@ -59,13 +61,14 @@ export class NewHeroComponent {
     });
   }
 
+  //gets a hero from the array.
   SelectHero(i: number) {
     let h: Hero = {} as Hero;
     h = this.Heros[i];
     this.NewAccount(h);
   }
 
-
+  //gives the player a new hero if they die or gives a choice of 3 heroes if it their first time playing.
   getHero(): void {
     this.exists = true;
     this.heroService.getRandomHero().subscribe((hero: Hero) => {
