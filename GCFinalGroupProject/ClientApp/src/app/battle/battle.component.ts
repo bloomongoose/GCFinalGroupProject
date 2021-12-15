@@ -233,27 +233,27 @@ export class BattleComponent {
 
   getHeroStats() {
     this.Damage = (
-      (parseInt((this.playerHero.powerstats.strength)) * 1.3)
+      Math.floor((parseInt((this.playerHero.powerstats.strength)) * 1.3)
       + (parseInt((this.playerHero.powerstats.power)) * 1.5)
-      + (parseInt(this.playerHero.powerstats.combat))
+      + (parseInt(this.playerHero.powerstats.combat)))
     );
     this.HP = (
-      (parseInt((this.playerHero.powerstats.durability)) * 5)
+      Math.floor((parseInt((this.playerHero.powerstats.durability)) * 5)
       + ((parseInt((this.playerHero.powerstats.speed)) / 20) * 10)
-      + ((parseInt((this.playerHero.powerstats.intelligence)) / 20) * 10)
+      + ((parseInt((this.playerHero.powerstats.intelligence)) / 20) * 10))
     );
   }
 
   getVillainStats() {
     this.villainDmg = (
-      (parseInt((this.villain.powerstats.strength)) * 1.3)
+      Math.floor((parseInt((this.villain.powerstats.strength)) * 1.3)
       + (parseInt((this.villain.powerstats.power)) * 1.5)
-      + (parseInt(this.villain.powerstats.combat))
+      + (parseInt(this.villain.powerstats.combat)))
     );
     this.villainHP = (
-      (parseInt((this.villain.powerstats.durability)) * 5)
+      Math.floor((parseInt((this.villain.powerstats.durability)) * 5)
       + ((parseInt((this.villain.powerstats.speed)) / 20) * 10)
-      + ((parseInt((this.villain.powerstats.intelligence)) / 20) * 10)
+      + ((parseInt((this.villain.powerstats.intelligence)) / 20) * 10))
     );
   }
 

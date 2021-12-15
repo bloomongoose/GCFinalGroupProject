@@ -12,6 +12,7 @@ export class FaqComponent {
   /** FAQ ctor */
   display: boolean = false;
   exampleHero: Hero = {} as Hero;
+<<<<<<< Updated upstream
 
   int: number;
   str: number;
@@ -20,10 +21,15 @@ export class FaqComponent {
   pow: number;
   com: number;
 
+=======
+  int: number;
+  str: number;
+>>>>>>> Stashed changes
 
   constructor(private heroService: HeroService) {
 
   }
+
 
   toggleDisplay(): void {
     this.display = !this.display;
@@ -38,6 +44,9 @@ export class FaqComponent {
       }
       else {
         this.exampleHero = hero;
+        this.int = parseInt(this.exampleHero.powerstats.intelligence);
+        this.str = parseInt(this.exampleHero.powerstats.strength);
+        console.log(this.int);
         console.log(this.exampleHero);
       }
       console.log(hero);
