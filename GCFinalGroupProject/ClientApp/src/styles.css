@@ -1,6 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
 
-/* Provide sufficient contrast against white background */
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1924px) {
+  .homeBG {
+    background-image: url('https://wallpaperforu.com/wp-content/uploads/2021/02/Wallpaper-Dc-Super-Heroes-Illustration-Untitled-Marvel-C371920x1200.jpg') !important;
+    background-repeat: no-repeat !important;
+    padding-top: 15rem;
+    padding-bottom: 15rem;
+    padding-right: 7rem;
+    padding-left: 7rem;
+    background-size: cover !important;
+    position: page;
+    top: 30%;
+    bottom: 50%;
+    margin: auto;
+    min-width: 100%;
+    min-height: 100%;
+  }
+}
 a {
   color: #0366d6;
 }
@@ -20,21 +42,6 @@ body, html {
 }
 
 
-.homeBG {
-  background-image: url('https://wallpaperforu.com/wp-content/uploads/2021/02/Wallpaper-Dc-Super-Heroes-Illustration-Untitled-Marvel-C371920x1200.jpg') !important;
-  background-repeat: no-repeat !important;
-  padding-top:15rem;
-  padding-bottom: 15rem;
-  padding-right: 7rem;
-  padding-left: 7rem;
-  background-size: cover !important;
-  position:page;
-  top: 30%;
-  bottom: 50%;
-  margin:auto;
-  min-width: 100%;
-  min-height: 100%;
-}
 
 .btn-primary {
   color: #fff;
