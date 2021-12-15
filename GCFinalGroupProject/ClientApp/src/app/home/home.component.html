@@ -10,19 +10,18 @@
         <h5>An epic battle between all of the world's favorite fictional heroes await. Please read our FAQ to learn more about the game. Otherwise, you can go ahead and click start to begin your hero's journey. You will need to register an account if you have not done so already.</h5>
         <div class="row" style="justify-content:center">
 
-          <div class="col-2">
-            <button class="btn-primary btn-lg" [routerLink]="'newHero'">Start</button>
+          <div class="col-3">
+            <button class="btn-primary" [routerLink]="'newHero'">Start</button>
           </div>
-          <div class="col-2">
-            <button class="btn-primary btn-lg" [routerLink]="'FAQ'">FAQ</button>
+          <div class="col-3">
+            <button class="btn-primary" [routerLink]="'FAQ'">FAQ</button>
           </div>
-          <div class="col-2">
-            <button class="btn-primary btn-lg" [routerLink]="'/authentication/register'">Register</button>
+          <div class="col-3">
+            <button class="btn-primary" [routerLink]="'/authentication/register'">Register</button>
           </div>
-
         </div>
       </div>
     </div>
-
   </div>
 </div>
+<app-footer></app-footer>

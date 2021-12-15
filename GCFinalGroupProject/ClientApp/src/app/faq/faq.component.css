@@ -1,5 +1,9 @@
 
 body{margin-top:20px;}
+
+.title{
+    color:aliceblue;
+}
 .section_padding_130 {
     padding-top: 130px;
     padding-bottom: 130px;
@@ -8,6 +12,7 @@ body{margin-top:20px;}
   position: relative;
   z-index: 1;
   background-color: #4D8AB5;
+
 }
 
 .faq-accordian {
@@ -75,6 +80,8 @@ body{margin-top:20px;}
     }
 }
 
+
+
 .support-button a {
   text-transform: capitalize;
   color: #951E22;
@@ -84,3 +91,5 @@ body{margin-top:20px;}
         font-size: 13px;
     }
 }
+
+

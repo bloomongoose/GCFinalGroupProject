@@ -13,7 +13,7 @@ import { UserInventory } from '../UserInventory';
 export class ItemShopComponent {
   currentInv: UserInventory = {} as UserInventory;
   item: ItemShop = {} as ItemShop;
-  message: string = "";
+  secret: boolean = false;
 
 
   allItems: ItemShop[] = [];
@@ -24,15 +24,15 @@ export class ItemShopComponent {
 
   ngOnInit() {
     this.updateInventory();
-    this.fillArray();
-   
+
   }
   //create array of itemshop. for loop on array. 
   fillArray() {
     this.allItems.push(this.itemService.GetAllItems().subscribe((response: ItemShop[]) => {
-      console.log(response);
       this.allItems = response;
-    }));
+      if (this.secret == false) { this.allItems.splice(this.allItems.findIndex(x => x.id == 7), 1); }
+      console.log(this.allItems);
+    }));  
   }
 
   //subtracts money then calls updateInventory
@@ -40,7 +40,7 @@ export class ItemShopComponent {
     this.itemService.Buy(itemID, itemPrice).subscribe((response: any) => {
       console.log(response);
       this.updateInventory();
-      this.message = `You have purchased item ${itemID}`;
+      ;
     });
   }
 
@@ -48,7 +48,10 @@ export class ItemShopComponent {
   updateInventory() {
     this.heroService.GetInv().subscribe((inv: UserInventory) => {
       console.log(inv);
+      if (inv.consecutiveWins >= 10) { this.secret = true; }
+      else { this.secret = false;}
       this.currentInv = inv;
+      this.fillArray();
     });
   }
 }

@@ -16,6 +16,7 @@ import { ItemShopComponent } from './item-shop/item-shop.component';
 import { BattleComponent } from './battle/battle.component';
 import { FaqComponent } from './faq/faq.component';
 import { AfterdeathComponent } from './afterdeath/afterdeath.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AfterdeathComponent } from './afterdeath/afterdeath.component';
     ItemShopComponent,
     BattleComponent,
     FaqComponent,
-    AfterdeathComponent
+    AfterdeathComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
