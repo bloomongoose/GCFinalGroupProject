@@ -1,5 +1,64 @@
 
+@media only screen and (width: 1024px) and (height: 600px){
+  .ItemBG {
+    background-image: url('https://cdna.artstation.com/p/assets/images/images/016/574/322/large/yang-sohyeon-2-1.jpg?1552713509') !important;
+    background-repeat: no-repeat !important;
+    padding-top: 40vh;
+    padding-bottom: 40vh;
+    background-size: cover !important;
+    position: page;
+    margin: auto;
+    min-width: 100%;
+    min-height: 100%;
+  }
 
+  .shop {
+    background-color: #B9BEBA;
+    box-shadow: 5px 5px 8px #888888;
+    opacity: 0.85;
+    position: absolute;
+    right: 23vw;
+    left: 23vw;
+    top: 11vh;
+    padding-left: 20px;
+  }
+
+  .shopINV {
+    background-color: #B9BEBA;
+    box-shadow: 5px 5px 8px #888888;
+    opacity: 0.85;
+    position: absolute;
+    right: 23vw;
+    left: 23vw;
+    top: 71.5vh;
+    padding-left: 20px;
+  }
+
+  .cringe {
+    font-size: 14px !important;
+  }
+
+  .btn-primary {
+    color: #fff;
+    background-color: #4D8AB5;
+    border-color: #447AA1;
+    font-weight: 400;
+    font-size: 11px;
+    letter-spacing: 0.125em;
+    border-radius: 0.3rem;
+    width: auto;
+    height: auto;
+  }
+
+    .btn-primary:hover,
+    .btn-primary:active,
+    .btn-primary:focus,
+    .btn-primary.active {
+      background: #5C9BB5;
+      color: #ffffff;
+      border-color: #5C9BB5;
+    }
+}
 /* Mobile */
 @media only screen and (min-width: 360px) and (min-height: 640px){
   .ItemBG {
@@ -21,7 +80,7 @@
     position: absolute;
     right: 14vw;
     left: 14vw;
-    top: 11vh;
+    top: 10vh;
     padding-left: 15px;
   }
 
@@ -32,13 +91,34 @@
     position: absolute;
     right: 14vw;
     left: 14vw;
-    top: 90vh;
+    top: 70vh;
     padding-left: 15px;
   }
 
   .cringe {
-    font-size: 12px !important;
+    font-size: 10px !important;
   }
+  .btn-primary {
+    color: #fff;
+    background-color: #4D8AB5;
+    border-color: #447AA1;
+    font-weight: 300;
+   
+    border-radius: 0.3rem;
+    font-size: 10px;
+    width: 3rem;
+    height: 2.25rem;
+  }
+
+    .btn-primary:hover,
+    .btn-primary:active,
+    .btn-primary:focus,
+    .btn-primary.active {
+      background: #5C9BB5;
+      color: #ffffff;
+      border-color: #5C9BB5;
+    }
+
 }
 
 /* Large devices */
@@ -80,6 +160,7 @@
   .cringe {
     font-size: 24px !important;
   }
+
 }
 
 

@@ -1,0 +1,24 @@
+@media only screen and (min-device-width : 280px) and (max-device-width : 768px){
+    .card{
+        font-size: 10px;
+        width: 8.25rem;
+    }
+  .vs {
+    color: #C72523;
+    font-size: 20px !important;
+    font-family: Algerian;
+    justify-content: center;
+    position: center;
+    padding-top: 12rem;
+    padding-left: 3rem; 
+  }
+}
+.vs {
+  color: #C72523;
+  font-size: 90px;
+  font-family: Algerian;
+  justify-content: center;
+  position: center;
+  padding-top: 12rem;
+  padding-right: 1rem;
+}
