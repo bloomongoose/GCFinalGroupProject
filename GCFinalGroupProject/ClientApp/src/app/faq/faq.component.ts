@@ -12,7 +12,6 @@ export class FaqComponent {
   /** FAQ ctor */
   display: boolean = false;
   exampleHero: Hero = {} as Hero;
-<<<<<<< Updated upstream
 
   int: number;
   str: number;
@@ -21,10 +20,6 @@ export class FaqComponent {
   pow: number;
   com: number;
 
-=======
-  int: number;
-  str: number;
->>>>>>> Stashed changes
 
   constructor(private heroService: HeroService) {
 

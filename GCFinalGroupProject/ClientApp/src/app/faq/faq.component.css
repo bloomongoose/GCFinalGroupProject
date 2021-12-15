@@ -93,12 +93,6 @@
     }
   }
 
-  .support-button a {
-    text-transform: capitalize;
-    color: #951E22;
-  }
-
-<<<<<<< Updated upstream
 
 
 .support-button a {
@@ -106,9 +100,6 @@
   color: #951E22;
 }
 @media only screen and (max-width: 575px) {
-=======
-  @media only screen and (max-width: 575px) {
->>>>>>> Stashed changes
     .support-button a {
       font-size: 13px;
     }
