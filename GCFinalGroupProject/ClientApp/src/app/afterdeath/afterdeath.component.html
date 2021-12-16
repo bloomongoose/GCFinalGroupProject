@@ -1,25 +1,50 @@
-<div class="container">
+<div class="container" >
   <div *ngIf="newHero.image.url != null" class="card" style="width:300px;">
     <img class="card-img-top" src="{{newHero.image.url}}" alt="Card image">
     <div class="card-body">
       <h3 class="card-title">{{newHero.name}}</h3>
       <h5>Alignment: {{newHero.biography.alignment}}</h5>
       <div class="row">
-        <div class="col-sm-6">
-          <p class="card-text">
-            INT: {{newHero.powerstats.intelligence}}<br />
-            STR: {{newHero.powerstats.strength}}<br />
-            SP:  {{newHero.powerstats.speed}}<br />
-            DUR: {{newHero.powerstats.durability}}<br />
-            POW: {{newHero.powerstats.power}}<br />
-            COM: {{newHero.powerstats.combat}}<br />
-          </p>
+        <div class="col-12">
+
+
+          Intelligence<div class="progress">
+            <div class="progress-bar bg-primary" role="progressbar" [style.width.%]="int" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100">{{newHero.powerstats.intelligence}}</div>
+          </div>
+
+          Strength
+          <div class="progress">
+            <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="str" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100">{{newHero.powerstats.strength}}</div>
+          </div>
+
+          Speed
+          <div class="progress">
+            <div class="progress-bar bg-info" role="progressbar" [style.width.%]="sp" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100">{{newHero.powerstats.speed}}</div>
+          </div>
+
+          Durability
+          <div class="progress">
+            <div class="progress-bar bg-success" role="progressbar" [style.width.%]="dur" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100">{{newHero.powerstats.durability}}</div>
+          </div>
+
+          Power
+          <div class="progress">
+            <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="pow" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100">{{newHero.powerstats.power}}</div>
+          </div>
+
+          Combat
+          <div class="progress">
+            <div class="progress-bar bg-dark" role="progressbar" [style.width.%]="com" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100">{{newHero.powerstats.combat}}</div>
+          </div>
         </div>
       </div>
-      <button class="btn-primary btn" [routerLink]="'/ItemShop'">To Shop
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
-  <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z" />
-</svg></button>
+      <br />
+      <button class="btn-primary btn" [routerLink]="'/ItemShop'">
+        To Shop
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
+          <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z" />
+        </svg>
+      </button>
     </div>
   </div>
 </div>

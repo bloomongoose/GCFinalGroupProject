@@ -28,7 +28,8 @@ import { FooterComponent } from './footer/footer.component';
     BattleComponent,
     FaqComponent,
     AfterdeathComponent,
-    FooterComponent
+    FooterComponent,
+    
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

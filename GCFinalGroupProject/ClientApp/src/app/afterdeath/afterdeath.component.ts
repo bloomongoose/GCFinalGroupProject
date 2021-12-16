@@ -14,7 +14,12 @@ export class AfterdeathComponent {
   newHero: Hero = {} as Hero;
   exists: boolean;
   Heros: Hero[] = [];
-
+  int: number;
+  str: number;
+  sp: number;
+  dur: number;
+  pow: number;
+  com: number;
 
   constructor(private heroService: HeroService) {
 
@@ -24,6 +29,10 @@ export class AfterdeathComponent {
     this.exists = true;
     setTimeout(() => { this.CheckHeroExists() }, 1000 * 1);
   }
+
+  SetUpStats() {
+  }
+
 
   CheckHeroExists(): boolean {
     return this.heroService.CheckHeroExists().subscribe((response: boolean) => {
@@ -35,6 +44,13 @@ export class AfterdeathComponent {
           this.heroService.getById(response.heroID).subscribe((resultHero: Hero) => {
             this.newHero = resultHero;
             console.log(this.newHero);
+            this.int = parseInt(this.newHero.powerstats.intelligence);
+            this.str = parseInt(this.newHero.powerstats.strength);
+            this.sp = parseInt(this.newHero.powerstats.speed);
+            this.dur = parseInt(this.newHero.powerstats.durability);
+            this.pow = parseInt(this.newHero.powerstats.power);
+            this.com = parseInt(this.newHero.powerstats.combat);
+
           });
         });
       }

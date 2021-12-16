@@ -25,6 +25,7 @@ export class FaqComponent {
 
   }
 
+
   toggleDisplay(): void {
     this.display = !this.display;
   }
@@ -38,6 +39,9 @@ export class FaqComponent {
       }
       else {
         this.exampleHero = hero;
+        this.int = parseInt(this.exampleHero.powerstats.intelligence);
+        this.str = parseInt(this.exampleHero.powerstats.strength);
+        console.log(this.int);
         console.log(this.exampleHero);
       }
       console.log(hero);
